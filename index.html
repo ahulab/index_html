@@ -3,7 +3,29 @@
   <head>
     <meta>
       <meta charset="UTF-8">
-      <title>Alex Baluha</title>
+      <meta charset="utf-8">
+      <title>Alex</title>
+      <base href="./">
+    
+      <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
+      <link rel="manifest" href="assets/icon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+    
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     </meta>
 
     <link rel="stylesheet" href="site.css">
@@ -12,24 +34,28 @@
   <body>
 	
     <div id="app">
-      <img class="alex" src="./alex_small.png">
+      <img
+        class="alex" 
+        src="./assets/alex_small.png"
+        onClick="$('.greeting').toggleClass('-is--hidden'); $('.alex').toggleClass('rotate')"
+      >
+      <span class="greeting -is--hidden">
+        Hey there. 
+      </span>
     </div>
 
-    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./dependencies/jquery-3.2.1.min.js"></script>
     
 
     <script>
       $(document).ready(function(){
-        // animateDiv();
         var alex = 'global';
-        // swaaang(1, 2);
         $('.alex').css('bottom', startPos() + 'px');
         $('.alex').css('visibility', 'visible');
 
         windowHeight = $(window).height() - $('.alex').width();
         windowWidth = $(window).width() - $('.alex').width();
 
-        // setInterval(swaaang, 1000, 1, 2)
         var slopeX = 2;
         var slopeY = 1;
         var x = 1;
@@ -52,7 +78,7 @@
             slopeY = reverse(slopeY);
           }
           $('.alex').css({ left: (x+= slopeX)+'px', bottom: (y+= slopeY)+'px' });
-        }, 10, 'linear')
+        }, 5, 'linear')
       });
 
       $(window).on('resize', function() {
@@ -68,33 +94,9 @@
         // Get viewport dimensions (remove the dimension of the div)
         var h = $(window).height() - $('.alex').width();
         var startingHeight = Math.floor(Math.random() * h);
-        // var nw = Math.floor(Math.random() * w);
         return startingHeight;    
       }
 
-
-
-
-
-      function swaaang(x, y){
-        // [x, y]
-        // [bottom, left]
-        console.log(x);
-        x ++
-        y ++
-        
-        
-        // swaaang(x, y)
-      }
-
-      // var funcLoop = setInterval(swaaang, 1000, x, y);
-      // var funcLoop = setInterval(animateDiv, 1000);
-
-      function animateDiv(){
-        var newq = makeNewPosition();
-        $('.alex').animate({ top: newq[0], left: newq[1] }, function(){
-        });
-      };
     </script>
 
   </body>
