@@ -1,0 +1,21 @@
+{
+  "name": "alexbaluha.com",
+  "version": "0.1.0",
+  "description": "alexbaluha.com static site",
+  "main": "echo \"Error: no main specified\" && exit 1",
+  "scripts": {
+    "build": "docker build -t alexbaluha .",
+    "tag": "docker tag alexbaluha:latest 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
+    "push": "docker push 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahulab/alexbaluha.com.git"
+  },
+  "author": "alex baluha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahulab/alexbaluha.com/issues"
+  },
+  "homepage": "https://github.com/ahulab/alexbaluha.com#readme"
+}
