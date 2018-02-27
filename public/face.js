@@ -20,32 +20,46 @@ $(document).ready(function(){
 
   // really ugly function for bouncing my face
   bouncingBeauty = function() {
-    if (x > windowWidth) {
-      x = windowWidth;
-      slopeX = reverse(slopeX);
-    }
-    else if (x < 0) {
+    if (running) {
+      if (x > windowWidth) {
+        x = windowWidth;
+        slopeX = reverse(slopeX);
+      }
+      else if (x < 0) {
         x = 0;
         slopeX = reverse(slopeX);
-    } 
-    else if (y > windowHeight) {
-      y = windowHeight;
-      slopeY = reverse(slopeY);
+      } 
+      else if (y > windowHeight) {
+        y = windowHeight;
+        slopeY = reverse(slopeY);
+      }
+      else if (y < 0) {
+        y = 0;
+        slopeY = reverse(slopeY);
+      }
+      $('.alex').css({ left: (x+= slopeX)+'px', bottom: (y+= slopeY)+'px' });
     }
-    else if (y < 0) {
-      y = 0;
-      slopeY = reverse(slopeY);
-    }
-    $('.alex').css({ left: (x+= slopeX)+'px', bottom: (y+= slopeY)+'px' });
   }
 
   windowHeight = $(window).height() - $('.alex').width();
   windowWidth = $(window).width() - $('.alex').width();
 
-  setInterval(bouncingBeauty, 3)
-});
+  setInterval(bouncingBeauty, 100)
+})
 
 $(window).on('resize', function() {
   windowHeight = $(window).height() - $('.alex').width();
   windowWidth = $(window).width() - $('.alex').width();
 })
+
+$('.alex').click(function() {
+  $('.greeting').toggleClass('-is--hidden'); 
+  $('.alex').toggleClass('rotate');
+
+  var greetingPos = $('.greeting').position();
+  console.log(greetingPos)
+  $('.alex').animate({
+    left: (greetingPos.left + $('.greeting').width()/2) - $('.alex').width()/2,
+    top: (greetingPos.top + $('.greeting').width()/2) // $('.alex').width()/2 
+  })
+});
