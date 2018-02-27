@@ -7,106 +7,33 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-114690291-1');
     </script>
-    <meta>
-      <meta charset="UTF-8">
-      <meta charset="utf-8">
-      <title>Alex</title>
-      <base href="./">
-    
-      <link rel="apple-touch-icon" sizes="57x57" href="assets/icon/apple-icon-57x57.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="assets/icon/apple-icon-60x60.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/apple-icon-76x76.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-icon-114x114.png">
-      <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/apple-icon-120x120.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="assets/icon/apple-icon-144x144.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-icon-152x152.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-icon-180x180.png">
-      <link rel="icon" type="image/png" sizes="192x192"  href="assets/icon/android-icon-192x192.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="assets/icon/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="96x96" href="assets/icon/favicon-96x96.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="assets/icon/favicon-16x16.png">
-      <link rel="manifest" href="assets/icon/manifest.json">
-      <meta name="msapplication-TileColor" content="#ffffff">
-      <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
-      <meta name="theme-color" content="#ffffff">
-    
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
+
+    <title>Alex</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="site.css">
+    <script type="text/javascript" src="./dependencies/jquery-3.2.1.min.js"></script>
+
   </head>
 
   <body>
-	
-    <div id="app">
+
+    <div>
       <img
         class="alex" 
         src="./assets/alex_small.png"
         onClick="$('.greeting').toggleClass('-is--hidden'); $('.alex').toggleClass('rotate')"
       >
       <span class="greeting -is--hidden">
-        Hey there. 
+        Hey there...
       </span>
     </div>
 
-    <script type="text/javascript" src="./dependencies/jquery-3.2.1.min.js"></script>
-    
-
-    <script>
-      $(document).ready(function(){
-        var alex = 'global';
-        $('.alex').css('bottom', startPos() + 'px');
-        $('.alex').css('visibility', 'visible');
-
-        windowHeight = $(window).height() - $('.alex').width();
-        windowWidth = $(window).width() - $('.alex').width();
-
-        var slopeX = 2;
-        var slopeY = 1;
-        var x = 1;
-        var y = startPos();
-
-        setInterval(function(){
-          if (x > windowWidth) {
-            x = windowWidth;
-            slopeX = reverse(slopeX);
-          } else if (x < 0) {
-              x = 0;
-              slopeX = reverse(slopeX);
-          } 
-          else if (y > windowHeight) {
-            y = windowHeight;
-            slopeY = reverse(slopeY);
-          }
-          else if (y < 0) {
-            y = 0;
-            slopeY = reverse(slopeY);
-          }
-          $('.alex').css({ left: (x+= slopeX)+'px', bottom: (y+= slopeY)+'px' });
-        }, 5, 'linear')
-      });
-
-      $(window).on('resize', function() {
-        windowHeight = $(window).height() - $('.alex').width();
-        windowWidth = $(window).width() - $('.alex').width(); 
-      })
-
-      function reverse(direction) {
-        return direction *= -1;
-      }
-
-      function startPos(){
-        // Get viewport dimensions (remove the dimension of the div)
-        var h = $(window).height() - $('.alex').width();
-        var startingHeight = Math.floor(Math.random() * h);
-        return startingHeight;    
-      }
-
-    </script>
+    <script src="./face.js"></script>
 
   </body>
 </html>
