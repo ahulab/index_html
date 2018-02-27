@@ -19,6 +19,7 @@ body {
 }
 
 .alex {
+    z-index: 100;
     width: 20%;
     position: absolute;
     visibility: hidden;

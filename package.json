@@ -6,7 +6,8 @@
   "scripts": {
     "build": "docker build -t alexbaluha .",
     "tag": "docker tag alexbaluha:latest 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
-    "push": "docker push 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest"
+    "push": "docker push 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
+    "uglify": "uglifyjs src/face.js --compress -m -o public/lib/face.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ahulab/alexbaluha.com/issues"
   },
-  "homepage": "https://github.com/ahulab/alexbaluha.com#readme"
+  "homepage": "https://github.com/ahulab/alexbaluha.com#readme",
+  "dependencies": {
+    "uglify-js": "^3.3.12"
+  }
 }
