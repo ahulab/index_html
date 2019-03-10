@@ -4,6 +4,7 @@
   "description": "alexbaluha.com static site",
   "main": "echo \"Error: no main specified\" && exit 1",
   "scripts": {
+    "pages": "cp -Rf public/ docs/",
     "build": "docker build -t alexbaluha .",
     "tag": "docker tag alexbaluha:latest 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
     "push": "docker push 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
