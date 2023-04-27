@@ -20,37 +20,53 @@ var startPos = function(){
 
 var y = startPos();
 
+var startTimestamp, previousTimestamp;
+
 var reverse = function(direction) {
   return direction *= -1;
 }
 
 // really ugly function for bouncing the image
-var bouncingBeauty = function() {
-  if (x > windowWidth) {
-    x = windowWidth;
-    slopeX = reverse(slopeX);
-  }
-  else if (x < 0) {
-    x = 0;
-    slopeX = reverse(slopeX);
-  } 
-  else if (y > windowHeight) {
-    y = windowHeight;
-    slopeY = reverse(slopeY);
-  }
-  else if (y < 0) {
-    y = 0;
-    slopeY = reverse(slopeY);
+var bouncingBeauty = function(timestamp) {
+  if (startTimestamp === undefined) {
+    startTimestamp = timestamp;
   }
 
-  $bouncing_image.css({ 
-    left: (x+= slopeX)+'px', 
-    bottom: (y+= slopeY)+'px' 
-  });
+  var elapsed = timestamp - startTimestamp;
+
+  if (previousTimestamp !== timestamp) {
+    if (x > windowWidth) {
+      x = windowWidth;
+      slopeX = reverse(slopeX);
+    }
+    else if (x < 0) {
+      x = 0;
+      slopeX = reverse(slopeX);
+    } 
+    else if (y > windowHeight) {
+      y = windowHeight;
+      slopeY = reverse(slopeY);
+    }
+    else if (y < 0) {
+      y = 0;
+      slopeY = reverse(slopeY);
+    }
+
+    $bouncing_image.css({ 
+      left: (x+= slopeX)+'px', 
+      bottom: (y+= slopeY)+'px' 
+    });
+  }
+
+  if (running == true) {
+    previousTimeStamp = timestamp;
+    window.requestAnimationFrame(bouncingBeauty);
+  }
+
 }
 
 var start = function() {
-  timer = setInterval(bouncingBeauty, 10);
+  window.requestAnimationFrame(bouncingBeauty);
 }
 
 $(document).ready(function(){
