@@ -18,7 +18,7 @@ body {
     overflow: hidden;
 }
 
-.alex {
+.bouncing_image {
     z-index: 100;
     width: 20%;
     position: absolute;
@@ -46,5 +46,3 @@ body {
 .greeting.-is--hidden {
     opacity: 0;
 }
-
-

@@ -6,14 +6,14 @@ var slopeY = 1;
 var x = 1;
 
 var $greeting = $('.greeting');
-var $alex = $('.alex');
+var $bouncing_image = $('.bouncing_image');
 
-windowHeight = $(window).height() - $alex.width();
-windowWidth = $(window).width() - $alex.width();
+windowHeight = $(window).height() - $bouncing_image.width();
+windowWidth = $(window).width() - $bouncing_image.width();
 
 var startPos = function(){
   // Get viewport dimensions (remove the dimension of the div)
-  var h = $(window).height() - $('.alex').width();
+  var h = $(window).height() - $('.bouncing_image').width();
   var startingHeight = Math.floor(Math.random() * h);
   return startingHeight;    
 }
@@ -24,7 +24,7 @@ var reverse = function(direction) {
   return direction *= -1;
 }
 
-// really ugly function for bouncing my face
+// really ugly function for bouncing the image
 var bouncingBeauty = function() {
   if (x > windowWidth) {
     x = windowWidth;
@@ -43,7 +43,7 @@ var bouncingBeauty = function() {
     slopeY = reverse(slopeY);
   }
 
-  $alex.css({ 
+  $bouncing_image.css({ 
     left: (x+= slopeX)+'px', 
     bottom: (y+= slopeY)+'px' 
   });
@@ -54,37 +54,37 @@ var start = function() {
 }
 
 $(document).ready(function(){
-  $alex.css('bottom', startPos() + 'px');
-  $alex.css('visibility', 'visible');
+  $bouncing_image.css('bottom', startPos() + 'px');
+  $bouncing_image.css('visibility', 'visible');
 
   start();
 })
 
 $(window).on('resize', function() {
-  windowHeight = $(window).height() - $('.alex').width();
-  windowWidth = $(window).width() - $('.alex').width();
+  windowHeight = $(window).height() - $('.bouncing_image').width();
+  windowWidth = $(window).width() - $('.bouncing_image').width();
 })
 
-$alex.click(function() {
+$bouncing_image.click(function() {
   if (running) {
     clearInterval(timer);
 
     var greetingPos = $greeting.position();
-    var alexWidth = $alex.width();
-    $alex.animate({
-      left: $(window).width()/2 - alexWidth/2,
-      bottom: $(window).height()/2 - alexWidth/2
+    var imgWidth = $bouncing_image.width();
+    $bouncing_image.animate({
+      left: $(window).width()/2 - imgWidth/2,
+      bottom: $(window).height()/2 - imgWidth/2
     })
 
   }
   else {
-    var currentFacePos = $alex.position();
-    x = currentFacePos.left;
-    y = currentFacePos.top;
+    var currentImgPos = $bouncing_image.position();
+    x = currentImgPos.left;
+    y = currentImgPos.top;
     start();
   }
   running = !running;
   
   $greeting.toggleClass('-is--hidden'); 
-  $alex.toggleClass('rotate');
+  $bouncing_image.toggleClass('rotate');
 });
