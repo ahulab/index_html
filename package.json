@@ -1,25 +1,20 @@
 {
-  "name": "alexbaluha.com",
+  "name": "index_html",
   "version": "0.1.0",
-  "description": "alexbaluha.com static site",
+  "description": "personal static site",
   "main": "echo \"Error: no main specified\" && exit 1",
   "scripts": {
-    "pages": "cp -Rf public/ docs/",
-    "build": "docker build -t alexbaluha .",
-    "tag": "docker tag alexbaluha:latest 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
-    "push": "docker push 333539066084.dkr.ecr.us-east-1.amazonaws.com/alexbaluha:latest",
-    "uglify": "uglifyjs src/face.js --compress -m -o public/lib/face.js"
+    "build": "rm -rf docs/* && npm run uglify && npm run pages",
+    "serve": "npm run build && python -m http.server -d ./docs/",
+    "pages": "cp -Rf public/* docs/",
+    "uglify": "uglifyjs src/main.js --compress -m -o public/lib/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahulab/alexbaluha.com.git"
+    "url": "git+https://github.com/ahulab/index_html.git"
   },
-  "author": "alex baluha",
+  "author": "ahulab",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ahulab/alexbaluha.com/issues"
-  },
-  "homepage": "https://github.com/ahulab/alexbaluha.com#readme",
   "dependencies": {
     "uglify-js": "^3.3.12"
   }
