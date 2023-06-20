@@ -1,0 +1,21 @@
+{
+  "name": "index_html",
+  "version": "0.1.0",
+  "description": "personal static site",
+  "main": "echo \"Error: no main specified\" && exit 1",
+  "scripts": {
+    "build": "rm -rf docs/* && npm run uglify && npm run pages",
+    "serve": "npm run build && python -m http.server -d ./docs/",
+    "pages": "cp -Rf public/* docs/",
+    "uglify": "uglifyjs src/main.js --compress -m -o public/lib/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahulab/index_html.git"
+  },
+  "author": "ahulab",
+  "license": "ISC",
+  "dependencies": {
+    "uglify-js": "^3.3.12"
+  }
+}
